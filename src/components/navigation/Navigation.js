@@ -42,7 +42,7 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              to="/comics"
+              to="/"
               onClick={handleClick}
               className="flex justify-between items-center"
             >
