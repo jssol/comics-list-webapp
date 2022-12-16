@@ -33,13 +33,13 @@ const Header = () => {
       <nav className="w-screen hidden lg:flex justify-center border-t-[0.5px] border-current">
         <ul className="w-2/5 flex justify-between items-center">
           <li>
-            <NavLink to="/news" className="flex py-2 justify-between items-center">
-              News
+            <NavLink to="/" className="flex justify-between items-center">
+              Comics
             </NavLink>
           </li>
           <li>
-            <NavLink to="/" className="flex justify-between items-center">
-              Comics
+            <NavLink to="/events" className="flex py-2 justify-between items-center">
+              Events
             </NavLink>
           </li>
           <li>
@@ -51,23 +51,18 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movies" className="flex justify-between items-center">
-              Movies
+            <NavLink to="/stories" className="flex justify-between items-center">
+              Stories
             </NavLink>
           </li>
           <li>
-            <NavLink to="/shows" className="flex justify-between items-center">
-              Tv Shows
+            <NavLink to="/series" className="flex justify-between items-center">
+              Series
             </NavLink>
           </li>
           <li>
-            <NavLink to="/games" className="flex justify-between items-center">
-              Games
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/videos" className="flex justify-between items-center">
-              Videos
+            <NavLink to="/creators" className="flex justify-between items-center">
+              Creators
             </NavLink>
           </li>
           <li>

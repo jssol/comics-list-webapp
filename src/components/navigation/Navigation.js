@@ -32,21 +32,21 @@ const Navigation = () => {
         <ul className="leading-10">
           <li>
             <NavLink
-              to="/news"
-              onClick={handleClick}
-              className="flex justify-between items-center"
-            >
-              <span>News</span>
-              <FaChevronRight />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/"
               onClick={handleClick}
               className="flex justify-between items-center"
             >
               <span>Comics</span>
+              <FaChevronRight />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/events"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
+              <span>Events</span>
               <FaChevronRight />
             </NavLink>
           </li>
@@ -62,41 +62,31 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              to="/movies"
+              to="/stories"
               onClick={handleClick}
               className="flex justify-between items-center"
             >
-              <span>Movies</span>
+              <span>Stories</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/shows"
+              to="/series"
               onClick={handleClick}
               className="flex justify-between items-center"
             >
-              <span>Tv Shows</span>
+              <span>Series</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/games"
+              to="/creators"
               onClick={handleClick}
               className="flex justify-between items-center"
             >
-              <span>Games</span>
-              <FaChevronRight />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/videos"
-              onClick={handleClick}
-              className="flex justify-between items-center"
-            >
-              <span>Videos</span>
+              <span>Creators</span>
               <FaChevronRight />
             </NavLink>
           </li>
