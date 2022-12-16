@@ -7,7 +7,7 @@ import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <div className="flex flex-col w-screen relative">
+    <div className="flex flex-col w-screen overflow-x-hidden relative">
       <Header />
       <Navigation />
       <Highlights />

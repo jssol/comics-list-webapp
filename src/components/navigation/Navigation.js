@@ -22,7 +22,7 @@ const Navigation = () => {
       className={`${
         open
           ? 'h-screen px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
-          : 'translate-y-full'
+          : 'translate-x-[-100%] absolute top-0 left-0 right-0'
       }`}
     >
       <button type="button" className="text-3xl" onClick={handleClick}>
@@ -31,20 +31,29 @@ const Navigation = () => {
       <nav className="my-8">
         <ul className="leading-10">
           <li>
-            <NavLink to="/news" className="flex justify-between items-center">
+            <NavLink
+              to="/news"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>News</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/comics" className="flex justify-between items-center">
+            <NavLink
+              to="/comics"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>Comics</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="characters"
+              to="/characters"
+              onClick={handleClick}
               className="flex justify-between items-center"
             >
               <span>Characters</span>
@@ -52,25 +61,41 @@ const Navigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movies" className="flex justify-between items-center">
+            <NavLink
+              to="/movies"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>Movies</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/shows" className="flex justify-between items-center">
+            <NavLink
+              to="/shows"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>Tv Shows</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
-            <NavLink to="/games" className="flex justify-between items-center">
+            <NavLink
+              to="/games"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>Games</span>
               <FaChevronRight />
             </NavLink>
           </li>
           <li>
-            <NavLink className="flex justify-between items-center">
+            <NavLink
+              to="/videos"
+              onClick={handleClick}
+              className="flex justify-between items-center"
+            >
               <span>Videos</span>
               <FaChevronRight />
             </NavLink>
