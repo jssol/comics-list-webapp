@@ -21,7 +21,7 @@ const Navigation = () => {
       data-theme="retro"
       className={`${
         open
-          ? 'px-8 py-5 uppercase absolute top-0 left-0 right-0 lg:hidden'
+          ? 'h-screen px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
           : 'translate-y-full'
       }`}
     >
@@ -97,12 +97,12 @@ const Navigation = () => {
       </nav>
       <section className="border-y border-current">
         <h4 className="font-bold my-4">Marvel Insider</h4>
-        <NavLink to="" className="flex mb-4 justify-between items-center">
+        <NavLink to="" className="flex mb-5 justify-between items-center">
           <span>User Profile</span>
           <FaChevronRight />
         </NavLink>
       </section>
-      <ul className="flex justify-between items-center mt-3 text-2xl py-5">
+      <ul className="flex justify-between items-center mt-5 text-2xl py-5">
         <li>
           <FaFacebook />
         </li>
