@@ -13,6 +13,7 @@ import Comics from './pages/Comics';
 import Characters from './pages/Characters';
 import Creators from './pages/Creators';
 import Series from './pages/Series';
+import NotFound from './components/notfound/NotFound';
 import reportWebVitals from './reportWebVitals';
 import './index.scss';
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <NotFound />,
     children: [
       {
         path: '',
