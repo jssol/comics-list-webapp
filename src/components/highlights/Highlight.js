@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Title from '../shared/Title';
 
 const Highlight = ({ event }) => (
   <div className="w-full h-full overflow-hidden">
@@ -10,8 +11,8 @@ const Highlight = ({ event }) => (
       className="w-full h-48 object-cover md:hidden"
     />
     <div className="w-full flex flex-col justify-between px-6">
-      <h2 className="mt-6">{event.title}</h2>
-      <p className="mt-4">{event.description}</p>
+      <Title>{event.title}</Title>
+      <p className="mt-8">{event.description}</p>
       <NavLink
         to="/event/:id"
         className="w-32 h-12 flex ml-2 mt-4 items-center justify-center px-4 py-2 bg-red-500 uppercase skew-x-[-20deg] font-semibold"
