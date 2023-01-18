@@ -38,11 +38,6 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/events" className="flex py-2 justify-between items-center">
-              Events
-            </NavLink>
-          </li>
-          <li>
             <NavLink
               to="/characters"
               className="flex justify-between items-center"
