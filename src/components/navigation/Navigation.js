@@ -21,7 +21,7 @@ const Navigation = () => {
       data-theme="retro"
       className={`${
         open
-          ? 'h-screen px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
+          ? 'h-screen z-10 px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
           : 'translate-x-[-100%] absolute top-0 left-0 right-0'
       }`}
     >
