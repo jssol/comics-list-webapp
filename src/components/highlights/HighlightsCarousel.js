@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Carousel from 'react-material-ui-carousel';
 import { FaChevronLeft, FaChevronRight, FaSpider } from 'react-icons/fa';
 import Highlight from './Highlight';
 
 const HighlightsCarousel = (props) => {
+  const [indicatorStyle, setIndicatorStyle] = useState({});
+  const handleResize = () => {
+    if (window.innerWidth >= 768) {
+      setIndicatorStyle({
+        style: {
+          position: 'absolute',
+          bottom: '1rem',
+          right: '2rem',
+          textAlign: 'right',
+          zIndex: 10,
+        },
+      });
+    } else {
+      setIndicatorStyle({
+        style: {
+          position: 'absolute',
+          bottom: '1rem',
+          right: '2rem',
+          textAlign: 'right',
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
+
   const { events } = props;
+
   return (
     <>
       {events.length !== 0 && (
         <Carousel
-          className="HighlightsCarousel w-full h-[38rem] relative overflow-hidden"
+          className="w-full h-[38rem] relative overflow-hidden"
           NextIcon={<FaChevronRight />}
           PrevIcon={<FaChevronLeft />}
           IndicatorIcon={<FaSpider />}
@@ -25,12 +56,10 @@ const HighlightsCarousel = (props) => {
               color: 'rgba(239, 68, 68, 1)',
             },
           }}
-          indicatorContainerProps={{
+          indicatorContainerProps={indicatorStyle}
+          navButtonsWrapperProps={{
             style: {
-              position: 'absolute',
-              bottom: '1rem',
-              right: '2rem',
-              textAlign: 'right',
+              padding: '0 2rem',
             },
           }}
           animation="slide"
