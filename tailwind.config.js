@@ -6,7 +6,7 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ['dracula', 'retro'],
+    themes: ['dracula', 'retro', 'light'],
   },
   // eslint-disable-next-line global-require
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
