@@ -18,7 +18,7 @@ const Navigation = () => {
 
   return (
     <section
-      data-theme="retro"
+      data-theme="light"
       className={`${
         open
           ? 'h-screen z-10 px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
