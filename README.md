@@ -1,46 +1,42 @@
-# Getting Started with Create React App and Redux
+# Comics List Webapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+- A simple webapp built around the Marvel comics API, on this webapp comic fans will be able to see a page listing all comics from the most recent to the oldest, search comics by title, e.g. spider-man, and mark comics as favorites. It is built using React, Redux, React-spring, and Tailwind.
 
-## Available Scripts
+***[Link to BackEnd App](https://github.com/jssol/comics-list-api)***
 
-In the project directory, you can run:
+## Built With 🛠️
 
-### `npm start`
+- [x] [ReactJs](https://reactjs.org/)
+- [x] [Tailwind](https://tailwindcss.com/)
+- [x] [DaisyUI](https://daisyui.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Run the following commands:</br>
+`git clone git@github.com:jssol/comics-list-webapp.git`</br>
+`cd comics-list-webapp`</br>
+`npm install`</br>
+`npm start`</br>
+Open a browser and go to: `https://localhost:3000` to view the frontend app.
 
-### `npm test`
+## Authors
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+👤 **Jonathan Sivahera**
 
-### `npm run build`
+- GitHub: [@jssol](https://github.com/jssol)
+- Twitter: [@jsivahera](https://twitter.com/jsivahera)
+- LinkedIn: [jsivahera](https://www.linkedin.com/in/jsivahera/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🤝 Contributing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contributions, issues, and feature requests are welcome!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Feel free to check the [issues page](https://github.com/jssol/comics-list-webapp/issues) and
 
-### `npm run eject`
+## Show your support
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Give a ⭐️ if you like this project!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📝 License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is [MIT](./MIT.md) licensed.
