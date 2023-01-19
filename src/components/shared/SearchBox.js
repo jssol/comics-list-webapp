@@ -17,13 +17,13 @@ const SearchBox = ({ searchComics, className }) => {
         type="text"
         name="search"
         placeholder="Search"
-        className="active:outline-none focus:outline-none h-full px-4 py-2"
+        className="active:outline-none focus:outline-none block w-full h-full p-5 text-red-500"
         onChange={(e) => setQuery(e.target.value)}
         value={query}
       />
       <button
         type="button"
-        className="lg:border-x-[0.5px] lg:p-5"
+        className="lg:border-x-[0.5px] p-5 text-white bg-red-500"
         onClick={handleSearch}
       >
         <FaSearch />
