@@ -42,16 +42,6 @@ const Navigation = () => {
           </li>
           <li>
             <NavLink
-              to="/events"
-              onClick={handleClick}
-              className="flex justify-between items-center"
-            >
-              <span>Events</span>
-              <FaChevronRight />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/characters"
               onClick={handleClick}
               className="flex justify-between items-center"

@@ -13,7 +13,7 @@ Title.propTypes = {
 };
 
 Title.defaultProps = {
-  className: 'mt-8 font-bold',
+  className: 'mt-8 font-bold uppercase',
 };
 
 export default Title;
