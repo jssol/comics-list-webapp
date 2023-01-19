@@ -40,7 +40,7 @@ const Card = (props) => {
 
   return (
     <article className="flex flex-col h-full gap-2 auto-rows-max">
-      <div className="aspect-[1/2] h-72 object-cover shadow-lg shadow-gray-400">
+      <div className="aspect-[1/2] h-72 object-cover shadow-lg hover:translate-y-[-0.5rem] transition duration-300 shadow-gray-400">
         <img alt={title} src={image} className="w-full h-full" />
       </div>
       <div className="w-full flex flex-col justify-between items-start">
