@@ -1,7 +1,8 @@
+$width: fit-content;
 
 .Title {
   position: relative;
-  width: fit-content;
+  width: $width;
   z-index: 0;
 }
 
@@ -10,7 +11,7 @@
   position: absolute;
   display: block;
   bottom: 50%;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%) skewX(-20deg);
   width: 0.25em;
   height: 75%;
@@ -23,7 +24,7 @@
   position: absolute;
   display: block;
   top: 125%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50%, -50%) skewX(-20deg);
   width: 0.25em;
   height: 75%;
