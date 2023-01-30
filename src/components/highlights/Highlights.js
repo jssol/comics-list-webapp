@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HighlightsCarousel from './HighlightsCarousel';
 import Spinner from '../shared/Spinner';
+import Error from '../shared/Error';
 import { fetchEvents } from '../../redux/events/events';
 
 const Highlights = () => {
@@ -19,7 +20,7 @@ const Highlights = () => {
         <Spinner containerStyle={{ height: '38rem' }} color="white" />
       )}
       {status === 'completed' && <HighlightsCarousel events={events} />}
-      {status === 'failed' && <div>{error}</div>}
+      {status === 'failed' && <Error error={error} />}
     </section>
   );
 };

@@ -4,6 +4,7 @@ import Spinner from '../components/shared/Spinner';
 import Title from '../components/shared/Title';
 import Card from '../components/shared/Card';
 import SearchBox from '../components/shared/SearchBox';
+import Error from '../components/shared/Error';
 import { searchComics } from '../redux/comics/search';
 
 const Search = () => {
@@ -31,7 +32,7 @@ const Search = () => {
             </section>
           </div>
         )}
-        {status === 'failed' && <div>{error}</div>}
+        {status === 'failed' && <Error error={error} />}
         {status === 'idle' && (
           <div className="w-10/12 lg:w-4/5 h-[28rem] lg:h-[38rem] flex items-center justify-center p-5 text-gray-400">
             Type your search and the results will be displayed here.

@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import Spinner from '../components/shared/Spinner';
 import Title from '../components/shared/Title';
 import Card from '../components/shared/Card';
+import Error from '../components/shared/Error';
 import { fetchComics } from '../redux/comics/comics';
 
 const Comics = () => {
@@ -32,7 +33,7 @@ const Comics = () => {
           </section>
         </div>
       )}
-      {status === 'failed' && <div>{error}</div>}
+      {status === 'failed' && <Error error={error} />}
     </section>
   );
 };
