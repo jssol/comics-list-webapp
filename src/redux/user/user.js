@@ -3,9 +3,9 @@ import axios from 'axios';
 import BASE_URL from '../api';
 
 const initialState = {
-  status: 'idle',
+  loggedIn: false,
   user: {},
-  error: '',
+  message: '',
 };
 
 export const login = createAsyncThunk('user/login', async (user) => {
@@ -65,74 +65,74 @@ const userSlice = createSlice({
       localStorage.removeItem('user');
       return {
         ...state,
-        status: 'idle',
+        loggedIn: false,
         user: {},
-        error: '',
+        message: '',
       };
     },
   },
   extraReducers: (builder) => {
     builder.addCase(signup.pending, (state) => ({
       ...state,
-      status: 'loading',
+      loggedIn: false,
       user: {},
-      error: '',
+      message: '',
     }));
     builder.addCase(signup.fulfilled, (state, action) => {
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
         ...state,
-        status: 'completed',
+        loggedIn: true,
         user: action.payload.user,
-        error: '',
+        message: 'Account created successfully!',
       };
     });
-    builder.addCase(signup.rejected, (state, action) => ({
+    builder.addCase(signup.rejected, (state) => ({
       ...state,
-      status: 'failed',
+      loggedIn: false,
       user: {},
-      error: action.error.message,
+      message: 'Account could not be created. Try again!',
     }));
     builder.addCase(login.pending, (state) => ({
       ...state,
-      status: 'loading',
+      loggedIn: false,
       user: {},
-      error: '',
+      message: '',
     }));
     builder.addCase(login.fulfilled, (state, action) => {
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
         ...state,
-        status: 'completed',
+        loggedIn: true,
         user: action.payload.user,
-        error: '',
+        message: '',
       };
     });
-    builder.addCase(login.rejected, (state, action) => ({
+    builder.addCase(login.rejected, (state) => ({
       ...state,
-      status: 'failed',
+      loggedIn: false,
       user: {},
-      error: action.error.message,
+      message: 'Invalid email or password',
     }));
     builder.addCase(deleteAccount.pending, (state) => ({
       ...state,
-      status: 'loading',
+      loggedIn: false,
       user: {},
-      error: '',
+      message: '',
     }));
-    builder.addCase(deleteAccount.fulfilled, (state, action) => ({
+    builder.addCase(deleteAccount.fulfilled, (state) => ({
       ...state,
-      status: 'completed',
+      loggedIn: false,
       user: {},
-      error: action.error.message,
+      message: 'Account deleted successfully!',
     }));
-    builder.addCase(deleteAccount.rejected, (state, action) => ({
+    builder.addCase(deleteAccount.rejected, (state) => ({
       ...state,
-      status: 'failed',
+      loggedIn: false,
       user: {},
-      error: action.error.message,
+      message: 'Account could not be deleted. Try again!',
     }));
   },
 });
