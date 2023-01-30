@@ -7,13 +7,22 @@ const WithScrollIntoView = (WrappedComponent) => {
 
     useEffect(() => {
       const currentRef = ref.current;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting === false) {
-            entry.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting === false
+              || entry.intersectionRatio < 0.5
+            ) {
+              entry.target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          });
+        },
+        { threshold: [0.5] },
+      );
       observer.observe(currentRef);
 
       return () => {
