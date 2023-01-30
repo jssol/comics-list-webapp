@@ -5,6 +5,7 @@ import Title from '../components/shared/Title';
 import Card from '../components/shared/Card';
 import SearchBox from '../components/shared/SearchBox';
 import Error from '../components/shared/Error';
+import WithScrollIntoView from '../components/shared/WithScrollIntoView';
 import { searchComics } from '../redux/comics/search';
 
 const Search = () => {
@@ -43,4 +44,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default WithScrollIntoView(Search);
