@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import Link from '../shared/Link';
 import Title from '../shared/Title';
 
 const Highlight = ({ event }) => {
@@ -38,12 +38,12 @@ const Highlight = ({ event }) => {
       <div className="w-full md:h-full flex flex-col justify-center px-6 md:py-28 md:px-16 lg:py-32 lg:px-64">
         <Title>{event.title}</Title>
         <p className="mt-8">{event.description}</p>
-        <NavLink
+        <Link
           to="/event/:id"
-          className="w-32 h-12 flex ml-2 mt-4 items-center justify-center px-4 py-2 bg-red-500 uppercase skew-x-[-20deg] font-semibold"
+          className="w-32 h-12 flex ml-2 hover:bg-white mt-4 items-center justify-center px-4 py-2 bg-red-500 uppercase skew-x-[-20deg] font-semibold"
         >
           <div className="skew-x-[20deg] text-center">Read now!</div>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
