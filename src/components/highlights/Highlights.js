@@ -9,11 +9,11 @@ const Highlights = () => {
   const dispatch = useDispatch();
   const eventsState = useSelector((state) => state.events);
 
-  useEffect(() => {
-    dispatch(fetchEvents());
-  }, [dispatch]);
+  const { status, events, error } = eventsState;
 
-  const { status, error } = eventsState;
+  useEffect(() => {
+    if (status === 'idle' || events === []) dispatch(fetchEvents());
+  }, [dispatch, status, events]);
 
   return (
     <section className="relative z-0 Highlights">

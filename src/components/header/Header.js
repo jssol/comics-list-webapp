@@ -20,14 +20,22 @@ const Header = () => {
         </button>
         <Link
           to="/profile"
-          className="lg:flex hidden justify-center py-5 border-x-[0.5px] px-3 items-center"
+          className="hover:text-[#ef4444] lg:flex hidden justify-center py-5 border-x-[0.5px] px-3 items-center"
         >
           User Profile
         </Link>
-        <h2 className="uppercase tracking-tighter bg-red-500 hover:bg-white text-4xl font-bold h-full flex flex-col justify-center items-center px-[6px]">
-          <Link to="/" className="w-full h-full flex items-center justify-center">Velmar</Link>
+        <h2 className="uppercase tracking-tighter bg-red-500 hover:text-[#ef4444] hover:bg-white text-4xl font-bold h-full flex flex-col justify-center items-center px-[6px]">
+          <Link
+            to="/"
+            className="w-full h-full flex items-center justify-center"
+          >
+            Velmar
+          </Link>
         </h2>
-        <Link to="/search" className="lg:border-x-[0.5px] lg:p-5">
+        <Link
+          to="/search"
+          className="hover:text-[#ef4444] lg:border-x-[0.5px] lg:p-5"
+        >
           <FaSearch />
         </Link>
       </section>
@@ -37,7 +45,7 @@ const Header = () => {
             <li key={link.text}>
               <Link
                 to={link.to}
-                className="flex justify-between items-center"
+                className="hover:text-[#ef4444] flex justify-between items-center"
               >
                 {link.text}
               </Link>

@@ -9,7 +9,7 @@ function Link({
     <NavLink
       to={to}
       onClick={onClick}
-      className={`hover:text-[#ef4444] transition-all duration-200 ${className}`}
+      className={`transition-all duration-200 ${className}`}
     >
       {children}
     </NavLink>

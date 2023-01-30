@@ -40,7 +40,7 @@ const Highlight = ({ event }) => {
         <p className="mt-8">{event.description}</p>
         <Link
           to="/event/:id"
-          className="w-32 h-12 flex ml-2 hover:bg-white mt-4 items-center justify-center px-4 py-2 bg-red-500 uppercase skew-x-[-20deg] font-semibold"
+          className="w-32 h-12 flex ml-2 hover:text-[#ef4444] hover:bg-white mt-4 items-center justify-center px-4 py-2 bg-red-500 uppercase skew-x-[-20deg] font-semibold"
         >
           <div className="skew-x-[20deg] text-center">Read now!</div>
         </Link>
