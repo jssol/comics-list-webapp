@@ -10,11 +10,13 @@ import { fetchComics } from '../redux/comics/comics';
 const Comics = () => {
   const dispatch = useDispatch();
   const comicsState = useSelector((state) => state.comics);
-  useEffect(() => {
-    dispatch(fetchComics());
-  }, [dispatch]);
 
   const { status, comics, error } = comicsState;
+
+  useEffect(() => {
+    if (status === 'idle' || comics === []) dispatch(fetchComics());
+  }, [dispatch, status, comics]);
+
   return (
     <section className="w-full flex flex-col" data-theme="light">
       {status === 'loading' && <Spinner containerStyle={{ height: '38rem' }} />}
