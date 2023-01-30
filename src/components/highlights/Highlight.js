@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Link from '../shared/Link';
 import Title from '../shared/Title';
@@ -6,7 +6,7 @@ import Title from '../shared/Title';
 const Highlight = ({ event }) => {
   const [style, setStyle] = useState({});
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     if (window.innerWidth >= 768) {
       setStyle({
         backgroundImage: `url(${event.thumbnail.path}.${event.thumbnail.extension})`,
@@ -20,13 +20,13 @@ const Highlight = ({ event }) => {
     } else {
       setStyle({});
     }
-  };
+  }, [event.thumbnail.path, event.thumbnail.extension]);
 
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, [handleResize]);
 
   return (
     <div className="w-full h-full overflow-hidden" style={style}>

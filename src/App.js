@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Outlet, useDispatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import Header from './components/header/Header';
 import Navigation from './components/navigation/Navigation';
 import Highlights from './components/highlights/Highlights';

@@ -75,7 +75,7 @@ Card.propTypes = {
       extension: PropTypes.string.isRequired,
     }).isRequired,
     creators: PropTypes.shape({
-      items: PropTypes.arrayOf().isRequired,
+      items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     }).isRequired,
   }).isRequired,
 };

@@ -8,18 +8,19 @@ import { fetchEvents } from '../../redux/events/events';
 const Highlights = () => {
   const dispatch = useDispatch();
   const eventsState = useSelector((state) => state.events);
+
   useEffect(() => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  const { status, events, error } = eventsState;
+  const { status, error } = eventsState;
 
   return (
     <section className="relative z-0 Highlights">
       {status === 'loading' && (
         <Spinner containerStyle={{ height: '38rem' }} color="white" />
       )}
-      {status === 'completed' && <HighlightsCarousel events={events} />}
+      {status === 'completed' && <HighlightsCarousel />}
       {status === 'failed' && <Error error={error} />}
     </section>
   );
