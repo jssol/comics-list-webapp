@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  open: false,
+  isOpen: false,
 };
 
 const navSlice = createSlice({
@@ -10,11 +10,11 @@ const navSlice = createSlice({
   reducers: {
     navOpened: (state) => ({
       ...state,
-      open: true,
+      isOpen: true,
     }),
     navClosed: (state) => ({
       ...state,
-      open: false,
+      isOpen: false,
     }),
   },
 });

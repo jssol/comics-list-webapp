@@ -9,7 +9,7 @@ import { navClosed } from '../../redux/navigation/navigation';
 const Navigation = () => {
   const dispatch = useDispatch();
   const navState = useSelector((state) => state.navigation);
-  const { open } = navState;
+  const { isOpen } = navState;
 
   const handleClick = () => {
     dispatch(navClosed());
@@ -19,7 +19,7 @@ const Navigation = () => {
     <section
       data-theme="light"
       className={`${
-        open
+        isOpen
           ? 'h-screen flex flex-col z-10 px-8 py-5 uppercase fixed top-0 left-0 right-0 bottom- 0 lg:hidden'
           : 'translate-x-[-100%] absolute top-0 left-0 right-0'
       }`}
