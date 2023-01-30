@@ -34,7 +34,7 @@ const Navigation = () => {
               <Link
                 to={link.to}
                 onClick={handleClick}
-                className="flex justify-between items-center"
+                className="hover:text-[#ef4444] flex justify-between items-center"
               >
                 <span>{link.text}</span>
                 <FaChevronRight />
@@ -45,7 +45,11 @@ const Navigation = () => {
       </nav>
       <section className="border-y border-current">
         <h4 className="font-bold my-4">Velmar Insider</h4>
-        <Link to="/profile" className="flex mb-5 justify-between items-center">
+        <Link
+          to="/profile"
+          onClick={handleClick}
+          className="flex mb-5 justify-between items-center"
+        >
           <span>User Profile</span>
           <FaChevronRight />
         </Link>
@@ -53,7 +57,13 @@ const Navigation = () => {
       <ul className="flex self-center gap-4 items-center mt-20 text-2xl py-5">
         {socialLinks.map((link) => (
           <li key={link.to}>
-            <Link to={link.to}>{link.icon}</Link>
+            <a
+              href={link.to}
+              onClick={handleClick}
+              className="hover:text-[#ef4444]"
+            >
+              {link.icon}
+            </a>
           </li>
         ))}
       </ul>
