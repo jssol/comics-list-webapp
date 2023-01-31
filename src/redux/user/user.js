@@ -12,7 +12,7 @@ export const login = createAsyncThunk('user/login', async (user) => {
   const response = await axios.post(
     `${BASE_URL}/login`,
     {
-      params: { user },
+      user,
     },
     {
       headers: {
@@ -40,7 +40,7 @@ export const signup = createAsyncThunk('user/signup', async (user) => {
   const response = await axios.post(
     `${BASE_URL}/signup`,
     {
-      params: { user },
+      user,
     },
     {
       headers: {
@@ -79,7 +79,7 @@ const userSlice = createSlice({
       message: '',
     }));
     builder.addCase(signup.fulfilled, (state, action) => {
-      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('token', action.payload.jwt);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
         ...state,
@@ -101,7 +101,7 @@ const userSlice = createSlice({
       message: '',
     }));
     builder.addCase(login.fulfilled, (state, action) => {
-      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('token', action.payload.jwt);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
         ...state,

@@ -26,7 +26,7 @@ const Signin = () => {
         return errors;
       }}
       onSubmit={(values) => {
-        dispatch(login(JSON.stringify(values, null, 2)));
+        dispatch(login(values));
       }}
     >
       <Form>

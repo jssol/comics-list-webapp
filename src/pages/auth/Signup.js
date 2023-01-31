@@ -35,7 +35,7 @@ const SignupForm = () => {
         return errors;
       }}
       onSubmit={(values) => {
-        dispatch(signup(JSON.stringify(values, null, 2)));
+        dispatch(signup(values));
       }}
     >
       <Form>
