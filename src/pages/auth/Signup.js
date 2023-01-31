@@ -32,11 +32,14 @@ const SignupForm = () => {
         if (!values.password) {
           errors.password = 'Required';
         }
-        if (!values.password_confimation) {
-          errors.password_confimation = 'Required';
+        if (!values.password_confirmation) {
+          errors.password_confirmation = 'Required';
         }
-        if (values.password !== values.password_confimation) {
-          errors.password_confimation = "Passwords don't match";
+        if (
+          values.password_confirmation && values.password
+          !== values.password_confirmation
+        ) {
+          errors.password_confirmation = "Passwords don't match";
         }
         return errors;
       }}
