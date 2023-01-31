@@ -1,5 +1,7 @@
 # Comics List Webapp
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cd667631-efce-478f-b6d6-494d67c56925/deploy-status)](https://app.netlify.com/sites/velmar/deploys)
+
 - A simple webapp built around the Marvel comics API, on this webapp comic fans will be able to see a page listing all comics from the most recent to the oldest, search comics by title, e.g. spider-man, and mark comics as favorites. It is built using React, Redux, React-spring, and Tailwind.
 
 ***[Link to BackEnd App](https://github.com/jssol/comics-list-api)***
