@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './components/header/Header';
 import Navigation from './components/navigation/Navigation';
 import Highlights from './components/highlights/Highlights';
@@ -8,7 +8,10 @@ import Footer from './components/footer/Footer';
 import { fetchCurrentUser } from './redux/user/user';
 
 const App = () => {
+  const [visible, setVisible] = useState(true);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { pathname } = location;
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -18,11 +21,19 @@ const App = () => {
     }
   }, [dispatch]);
 
+  useMemo(() => {
+    if (pathname === '/dashboard') {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+  }, [pathname]);
+
   return (
     <div className="flex flex-col w-screen overflow-x-hidden relative">
       <Header />
       <Navigation />
-      <Highlights />
+      {visible && <Highlights />}
       <Outlet />
       <Footer />
     </div>
