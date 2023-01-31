@@ -9,7 +9,10 @@ import { navClosed } from '../../redux/navigation/navigation';
 const Navigation = () => {
   const dispatch = useDispatch();
   const navState = useSelector((state) => state.navigation);
+  const userState = useSelector((state) => state.user);
+
   const { isOpen } = navState;
+  const { loggedIn } = userState;
 
   const handleClick = () => {
     dispatch(navClosed());
@@ -45,14 +48,18 @@ const Navigation = () => {
       </nav>
       <section className="border-y border-current">
         <h4 className="font-bold my-4">Velmar Insider</h4>
-        <Link
-          to="/profile"
-          onClick={handleClick}
-          className="flex mb-5 justify-between items-center"
-        >
-          <span>User Profile</span>
-          <FaChevronRight />
-        </Link>
+        {loggedIn ? (
+          <div>Username</div>
+        ) : (
+          <Link
+            to="/auth"
+            onClick={handleClick}
+            className="flex mb-5 justify-between items-center"
+          >
+            <span>Login</span>
+            <FaChevronRight />
+          </Link>
+        )}
       </section>
       <ul className="flex self-center gap-4 items-center mt-20 text-2xl py-5">
         {socialLinks.map((link) => (

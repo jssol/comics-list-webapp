@@ -1,12 +1,15 @@
 import React from 'react';
 import { FaBars, FaSearch } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from '../shared/Link';
 import navLinks from '../../utils/navLinks';
 import { navOpened } from '../../redux/navigation/navigation';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const userState = useSelector((state) => state.user);
+
+  const { loggedIn } = userState;
 
   const handleClick = () => {
     dispatch(navOpened());
@@ -18,12 +21,18 @@ const Header = () => {
         <button type="button" onClick={handleClick} className="lg:hidden">
           <FaBars />
         </button>
-        <Link
-          to="/profile"
-          className="hover:text-[#ef4444] lg:flex hidden justify-center py-5 border-x-[0.5px] px-3 items-center"
-        >
-          User Profile
-        </Link>
+        {
+          loggedIn ? (
+            <div>Username</div>
+          ) : (
+            <Link
+              to="/auth"
+              className="hover:text-[#ef4444] lg:flex hidden justify-center py-5 border-x-[0.5px] px-3 items-center"
+            >
+              Login
+            </Link>
+          )
+        }
         <h2 className="uppercase tracking-tighter bg-red-500 hover:text-[#ef4444] hover:bg-white text-4xl font-bold h-full flex flex-col justify-center items-center px-[6px]">
           <Link
             to="/"
