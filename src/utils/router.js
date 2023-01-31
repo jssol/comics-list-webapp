@@ -9,6 +9,7 @@ import NotFound from '../components/notfound/NotFound';
 import Auth from '../pages/auth/Auth';
 import Signin from '../pages/auth/Signin';
 import Signup from '../pages/auth/Signup';
+import Dashboard from '../components/user/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <Search />,
+      },
+      {
+        path: 'dashboard',
+        element: <Dashboard />,
       },
       {
         path: 'auth',
