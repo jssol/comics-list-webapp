@@ -1,8 +1,8 @@
 import React from 'react';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import CustomForm from '../../components/shared/Form';
+import FormInput from '../../components/shared/FormInput';
 import { login } from '../../redux/user/user';
 
 const Signin = () => {
@@ -29,15 +29,22 @@ const Signin = () => {
         dispatch(login(values));
       }}
     >
-      <Form>
-        <Field type="email" name="email" placeholder="Email" />
-        <ErrorMessage name="email" component="div" />
-        <Field type="password" name="password" placeholder="Password" />
-        <ErrorMessage name="password" component="div" />
-        <button type="submit">
-          Sign in
+      <>
+        <CustomForm
+          id="signin-form"
+          className="shadow-xl rounded-b-lg overflow-hidden"
+        >
+          <FormInput type="email" name="email" placeholder="Email" />
+          <FormInput type="password" name="password" placeholder="Password" />
+        </CustomForm>
+        <button
+          htmlFor="signin-form"
+          type="submit"
+          className="w-32 h-12 flex ml-2 hover:shadow-xl mt-8 items-center justify-center px-4 py-2 bg-red-500 text-white uppercase skew-x-[-20deg] font-semibold"
+        >
+          <span className="block skew-x-[20deg]">Sign in</span>
         </button>
-      </Form>
+      </>
     </Formik>
   );
 };

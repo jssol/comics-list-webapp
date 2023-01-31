@@ -40,16 +40,16 @@ const Authentication = () => {
         </div>
         <div className="w-full flex-col items-center justify-center gap-4">
           <Title>{title}</Title>
-          <div className="w-full my-10 shadow-xl rounded-lg overflow-hidden">
-            <ul className="w-full flex">
+          <div className="w-full my-10 rounded-t-lg overflow-hidden">
+            <ul className="w-full flex items-center">
               <li className="w-full h-10 flex items-center justify-center">
                 <Link
                   to="/auth"
                   style={{ backgroundColor: 'white' }}
                   className={`${
                     activeLink === 'signin'
-                      ? 'flex items-center justify-center w-full py-4 px-8 text-red-500 bg-white'
-                      : 'flex items-center justify-center w-full py-4 px-8 text-red-500 bg-gray-100'
+                      ? 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-white'
+                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-gray-100'
                   }`}
                 >
                   Sign in
@@ -63,8 +63,8 @@ const Authentication = () => {
                   }
                   className={`${
                     activeLink === 'signup'
-                      ? 'flex items-center justify-center w-full py-4 px-8 text-red-500 bg-white'
-                      : 'flex items-center justify-center w-full py-4 px-8 text-red-500 bg-gray-100'
+                      ? 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-white'
+                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-gray-100'
                   }`}
                 >
                   Sign up

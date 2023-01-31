@@ -1,8 +1,8 @@
 import React from 'react';
-import {
-  Formik, Form, Field, ErrorMessage,
-} from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import CustomForm from '../../components/shared/Form';
+import FormInput from '../../components/shared/FormInput';
 import { signup } from '../../redux/user/user';
 
 const SignupForm = () => {
@@ -38,24 +38,24 @@ const SignupForm = () => {
         dispatch(signup(values));
       }}
     >
-      <Form>
-        <Field type="input" name="first_name" placeholder="Fist" />
-        <ErrorMessage name="first_name" component="div" />
-        <Field type="input" name="last_name" placeholder="Last" />
-        <ErrorMessage name="last_name" component="div" />
-        <Field type="input" name="username" placeholder="@username" />
-        <ErrorMessage name="username" component="div" />
-        <Field type="email" name="email" placeholder="Email" />
-        <ErrorMessage name="email" component="div" />
-        <Field type="password" name="password" placeholder="Password" />
-        <ErrorMessage name="password" component="div" />
+      <>
+        <CustomForm
+          id="signup-form"
+        >
+          <FormInput type="input" name="first_name" placeholder="Fist" />
+          <FormInput type="input" name="last_name" placeholder="Last" />
+          <FormInput type="input" name="username" placeholder="@username" />
+          <FormInput type="email" name="email" placeholder="Email" />
+          <FormInput type="password" name="password" placeholder="Password" />
+        </CustomForm>
         <button
+          htmlFor="signup-form"
           type="submit"
-          className="w-32 h-12 flex ml-2 hover:shadow-xl mt-4 items-center justify-center px-4 py-2 bg-red-500 text-white uppercase skew-x-[-20deg] font-semibold"
+          className="w-32 h-12 flex ml-2 hover:shadow-xl mt-8 items-center justify-center px-4 py-2 bg-red-500 text-white uppercase skew-x-[-20deg] font-semibold"
         >
           <span className="block skew-x-[20deg]">Sign up</span>
         </button>
-      </Form>
+      </>
     </Formik>
   );
 };
