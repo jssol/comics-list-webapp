@@ -6,6 +6,9 @@ import Creators from '../pages/Creators';
 import Events from '../pages/Events';
 import Search from '../pages/Search';
 import NotFound from '../components/notfound/NotFound';
+import Auth from '../pages/auth/Auth';
+import Signin from '../pages/auth/Signin';
+import Signup from '../pages/auth/Signup';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,20 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <Search />,
+      },
+      {
+        path: 'auth',
+        element: <Auth />,
+        children: [
+          {
+            path: '',
+            element: <Signin />,
+          },
+          {
+            path: 'signup',
+            element: <Signup />,
+          },
+        ],
       },
     ],
   },
