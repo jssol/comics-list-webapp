@@ -12,7 +12,7 @@ const Navigation = () => {
   const userState = useSelector((state) => state.user);
 
   const { isOpen } = navState;
-  const { loggedIn } = userState;
+  const { loggedIn, user: { first_name: fName } } = userState;
 
   const handleClick = () => {
     dispatch(navClosed());
@@ -49,7 +49,10 @@ const Navigation = () => {
       <section className="border-y border-current">
         <h4 className="font-bold my-4">Velmar Insider</h4>
         {loggedIn ? (
-          <div>Username</div>
+          <div className="flex mb-5 justify-between items-center">
+            <span>{fName}</span>
+            <FaChevronRight />
+          </div>
         ) : (
           <Link
             to="/auth"
