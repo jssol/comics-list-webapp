@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import CustomForm from '../../components/shared/Form';
+import CustomForm from '../../components/shared/CustomForm';
 import FormInput from '../../components/shared/FormInput';
 import { signup } from '../../redux/user/user';
 
@@ -32,6 +32,12 @@ const SignupForm = () => {
         if (!values.password) {
           errors.password = 'Required';
         }
+        if (!values.password_confimation) {
+          errors.password_confimation = 'Required';
+        }
+        if (values.password !== values.password_confimation) {
+          errors.password_confimation = "Passwords don't match";
+        }
         return errors;
       }}
       onSubmit={(values) => {
@@ -42,11 +48,16 @@ const SignupForm = () => {
         <CustomForm
           id="signup-form"
         >
-          <FormInput type="input" name="first_name" placeholder="Fist" />
+          <FormInput type="input" name="first_name" placeholder="First" />
           <FormInput type="input" name="last_name" placeholder="Last" />
-          <FormInput type="input" name="username" placeholder="@username" />
+          <FormInput type="input" name="username" placeholder="Username" />
           <FormInput type="email" name="email" placeholder="Email" />
           <FormInput type="password" name="password" placeholder="Password" />
+          <FormInput
+            type="password"
+            name="password_confirmation"
+            placeholder="Confirm Password"
+          />
         </CustomForm>
         <button
           htmlFor="signup-form"

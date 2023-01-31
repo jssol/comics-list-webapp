@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import CustomForm from '../../components/shared/Form';
+import CustomForm from '../../components/shared/CustomForm';
 import FormInput from '../../components/shared/FormInput';
 import { login } from '../../redux/user/user';
 
@@ -32,7 +32,6 @@ const Signin = () => {
       <>
         <CustomForm
           id="signin-form"
-          className="shadow-xl rounded-b-lg overflow-hidden"
         >
           <FormInput type="email" name="email" placeholder="Email" />
           <FormInput type="password" name="password" placeholder="Password" />

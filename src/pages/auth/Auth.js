@@ -48,8 +48,8 @@ const Authentication = () => {
                   style={{ backgroundColor: 'white' }}
                   className={`${
                     activeLink === 'signin'
-                      ? 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-white'
-                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-gray-100'
+                      ? 'flex items-center font-semibold justify-center h-full w-full py-4 px-8 text-red-500 bg-neutral'
+                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500'
                   }`}
                 >
                   Sign in
@@ -63,8 +63,8 @@ const Authentication = () => {
                   }
                   className={`${
                     activeLink === 'signup'
-                      ? 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-white'
-                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500 bg-gray-100'
+                      ? 'flex items-center font-semibold justify-center h-full w-full py-4 px-8 text-red-500 bg-neutral'
+                      : 'flex items-center justify-center h-full w-full py-4 px-8 text-red-500'
                   }`}
                 >
                   Sign up
