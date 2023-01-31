@@ -24,7 +24,7 @@ export const login = createAsyncThunk('user/login', async (user) => {
 });
 
 export const fetchCurrentUser = createAsyncThunk('user/profile', async () => {
-  const response = await axios.post(
+  const response = await axios.get(
     `${BASE_URL}/authorized`,
     {},
     {
