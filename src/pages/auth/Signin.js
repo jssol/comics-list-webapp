@@ -37,7 +37,7 @@ const Signin = () => {
           <FormInput type="password" name="password" placeholder="Password" />
         </CustomForm>
         <button
-          htmlFor="signin-form"
+          form="signin-form"
           type="submit"
           className="w-32 h-12 flex ml-2 hover:shadow-xl mt-8 items-center justify-center px-4 py-2 bg-red-500 text-white uppercase skew-x-[-20deg] font-semibold"
         >
