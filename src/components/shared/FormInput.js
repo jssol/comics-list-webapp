@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
@@ -9,13 +10,23 @@ const FormInput = (props) => {
     <div className="w-full h-auto flex flex-col border-b-2 transition-all last:border-none border-b-current focus-within:border-b-red-500">
       <p className="mx-4 my-2 font-semibold">{placeholder}</p>
       <div className="w-full h-10 flex items-center justify-center relative">
-        <Field
-          type={type}
-          className="Field bg-transparent w-full h-full relative focus:outline-none px-4 py-2"
-          name={name}
-          placeholder={placeholder}
-          autoComplete="off"
-        />
+        {type === 'checkbox' ? (
+          <label
+            className="flex items-center w-full h-full px-4 py-2"
+            htmlFor={name}
+          >
+            <Field type={type} name={name} />
+            <span className="w-full flex items-center px-1">{placeholder}</span>
+          </label>
+        ) : (
+          <Field
+            type={type}
+            className="Field bg-transparent w-full h-full relative focus:outline-none px-4 py-2"
+            name={name}
+            placeholder={placeholder}
+            autoComplete="off"
+          />
+        )}
         <ErrorMessage
           className="bg-transparent absolute right-4 text-red-500 top-0 flex items-center justify-center bottom-0"
           name={name}
