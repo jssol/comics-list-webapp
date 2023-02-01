@@ -3,6 +3,7 @@ import axios from 'axios';
 import BASE_URL from '../api';
 
 const initialState = {
+  status: 'idle',
   loggedIn: false,
   user: {},
   message: '',
@@ -48,6 +49,7 @@ const userSlice = createSlice({
       localStorage.removeItem('token');
       return {
         ...state,
+        status: 'idle',
         loggedIn: false,
         user: {},
         message: '',
@@ -57,6 +59,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(signup.pending, (state) => ({
       ...state,
+      status: 'loading',
       loggedIn: false,
       user: {},
       message: '',
@@ -65,6 +68,7 @@ const userSlice = createSlice({
       localStorage.setItem('token', JSON.stringify(action.payload.jwt));
       return {
         ...state,
+        status: 'completed',
         loggedIn: true,
         user: action.payload.user,
         message: 'Account created successfully!',
@@ -72,12 +76,14 @@ const userSlice = createSlice({
     });
     builder.addCase(signup.rejected, (state) => ({
       ...state,
+      status: 'failed',
       loggedIn: false,
       user: {},
       message: 'Account could not be created. Try again!',
     }));
     builder.addCase(login.pending, (state) => ({
       ...state,
+      status: 'loading',
       loggedIn: false,
       user: {},
       message: '',
@@ -86,49 +92,57 @@ const userSlice = createSlice({
       localStorage.setItem('token', JSON.stringify(action.payload.jwt));
       return {
         ...state,
+        status: 'completed',
         loggedIn: true,
         user: action.payload.user,
-        message: '',
+        message: 'You have successfully logged in!',
       };
     });
     builder.addCase(login.rejected, (state) => ({
       ...state,
+      status: 'failed',
       loggedIn: false,
       user: {},
-      message: 'Invalid email or password',
+      message: 'Invalid email or password!',
     }));
     builder.addCase(fetchCurrentUser.pending, (state) => ({
       ...state,
+      status: 'loading',
       loggedIn: false,
       user: {},
       message: '',
     }));
     builder.addCase(fetchCurrentUser.fulfilled, (state, action) => ({
       ...state,
+      status: 'completed',
       loggedIn: true,
       user: action.payload.user,
       message: 'Fetch current user success',
     }));
     builder.addCase(fetchCurrentUser.rejected, (state) => ({
       ...state,
+      status: 'failed',
       loggedIn: false,
       user: {},
       message: 'Fetch current user failed',
     }));
     builder.addCase(deleteAccount.pending, (state) => ({
       ...state,
+      status: 'loading',
       loggedIn: false,
       user: {},
       message: '',
     }));
     builder.addCase(deleteAccount.fulfilled, (state) => ({
       ...state,
+      status: 'completed',
       loggedIn: false,
       user: {},
       message: 'Account deleted successfully!',
     }));
     builder.addCase(deleteAccount.rejected, (state) => ({
       ...state,
+      status: 'failed',
       loggedIn: false,
       user: {},
       message: 'Account could not be deleted. Try again!',
