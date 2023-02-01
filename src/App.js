@@ -14,9 +14,8 @@ const App = () => {
   const { pathname } = location;
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('token'));
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && token) {
+    const token = localStorage.getItem('token');
+    if (token && token.length > 0) {
       dispatch(fetchCurrentUser());
     }
   }, [dispatch]);
