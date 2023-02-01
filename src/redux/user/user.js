@@ -16,20 +16,20 @@ export const login = createAsyncThunk('user/login', async (user) => {
     },
     {
       headers: {
-        Authorization: `${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     },
   );
   return response.data;
 });
 
-export const fetchCurrentUser = createAsyncThunk('user/profile', async () => {
-  const response = await axios.get(
+export const fetchCurrentUser = createAsyncThunk('user/authorized', async () => {
+  const response = await axios.post(
     `${BASE_URL}/authorized`,
     {},
     {
       headers: {
-        Authorization: `${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     },
   );
@@ -44,7 +44,7 @@ export const signup = createAsyncThunk('user/signup', async (user) => {
     },
     {
       headers: {
-        Authorization: `${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     },
   );
@@ -62,7 +62,6 @@ const userSlice = createSlice({
   reducers: {
     logout: (state) => {
       localStorage.removeItem('token');
-      localStorage.removeItem('user');
       return {
         ...state,
         loggedIn: false,
@@ -79,8 +78,7 @@ const userSlice = createSlice({
       message: '',
     }));
     builder.addCase(signup.fulfilled, (state, action) => {
-      localStorage.setItem('token', action.payload.jwt);
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      localStorage.setItem('token', JSON.stringify(action.payload.jwt));
       return {
         ...state,
         loggedIn: true,
@@ -101,8 +99,7 @@ const userSlice = createSlice({
       message: '',
     }));
     builder.addCase(login.fulfilled, (state, action) => {
-      localStorage.setItem('token', action.payload.jwt);
-      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      localStorage.setItem('token', JSON.stringify(action.payload.jwt));
       return {
         ...state,
         loggedIn: true,
@@ -115,6 +112,24 @@ const userSlice = createSlice({
       loggedIn: false,
       user: {},
       message: 'Invalid email or password',
+    }));
+    builder.addCase(fetchCurrentUser.pending, (state) => ({
+      ...state,
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(fetchCurrentUser.fulfilled, (state, action) => ({
+      ...state,
+      loggedIn: true,
+      user: action.payload.user,
+      message: 'Fetch current user success',
+    }));
+    builder.addCase(fetchCurrentUser.rejected, (state) => ({
+      ...state,
+      loggedIn: false,
+      user: {},
+      message: 'Fetch current user failed',
     }));
     builder.addCase(deleteAccount.pending, (state) => ({
       ...state,
