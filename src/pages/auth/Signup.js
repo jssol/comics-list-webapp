@@ -36,21 +36,20 @@ const SignupForm = () => {
           errors.password_confirmation = 'Required';
         }
         if (
-          values.password_confirmation && values.password
-          !== values.password_confirmation
+          values.password_confirmation
+          && values.password !== values.password_confirmation
         ) {
           errors.password_confirmation = "Passwords don't match";
         }
         return errors;
       }}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         dispatch(signup(values));
+        resetForm();
       }}
     >
       <>
-        <CustomForm
-          id="signup-form"
-        >
+        <CustomForm id="signup-form">
           <FormInput type="input" name="first_name" placeholder="First" />
           <FormInput type="input" name="last_name" placeholder="Last" />
           <FormInput type="input" name="username" placeholder="Username" />

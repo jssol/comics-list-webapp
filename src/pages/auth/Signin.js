@@ -25,14 +25,13 @@ const Signin = () => {
         }
         return errors;
       }}
-      onSubmit={(values) => {
+      onSubmit={(values, { resetForm }) => {
         dispatch(login(values));
+        resetForm();
       }}
     >
       <>
-        <CustomForm
-          id="signin-form"
-        >
+        <CustomForm id="signin-form">
           <FormInput type="email" name="email" placeholder="Email" />
           <FormInput type="password" name="password" placeholder="Password" />
         </CustomForm>
