@@ -55,11 +55,8 @@ const SignupForm = () => {
           <FormInput type="input" name="username" placeholder="Username" />
           <FormInput type="email" name="email" placeholder="Email" />
           <FormInput type="password" name="password" placeholder="Password" />
-          <FormInput
-            type="password"
-            name="password_confirmation"
-            placeholder="Confirm Password"
-          />
+          <FormInput type="password" name="password_confirmation" placeholder="Confirm Password" />
+          <FormInput type="checkbox" name="remember_me" placeholder="Remember me" />
         </CustomForm>
         <button
           form="signup-form"

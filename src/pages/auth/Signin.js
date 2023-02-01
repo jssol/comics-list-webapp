@@ -34,6 +34,7 @@ const Signin = () => {
         <CustomForm id="signin-form">
           <FormInput type="email" name="email" placeholder="Email" />
           <FormInput type="password" name="password" placeholder="Password" />
+          <FormInput type="checkbox" name="remember_me" placeholder="Remember me" />
         </CustomForm>
         <button
           form="signin-form"
