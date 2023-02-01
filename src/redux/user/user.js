@@ -94,6 +94,32 @@ const userSlice = createSlice({
       user: {},
       message: 'Account could not be created. Try again!',
     }));
+    builder.addCase(fetchCurrentUser.pending, (state) => ({
+      ...state,
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(fetchCurrentUser.fulfilled, (state, action) => {
+      localStorage.setItem('token', action.payload.jwt);
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      return {
+        ...state,
+        loggedIn: true,
+        user: action.payload.user,
+        message: 'Fetched current_user!',
+      };
+    });
+    builder.addCase(fetchCurrentUser.rejected, (state) => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      return {
+        ...state,
+        loggedIn: false,
+        user: {},
+        message: 'Failed to fetch current_user!',
+      };
+    });
     builder.addCase(login.pending, (state) => ({
       ...state,
       loggedIn: false,
