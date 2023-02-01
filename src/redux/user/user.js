@@ -9,17 +9,9 @@ const initialState = {
 };
 
 export const login = createAsyncThunk('user/login', async (user) => {
-  const response = await axios.post(
-    `${BASE_URL}/login`,
-    {
-      user,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-      },
-    },
-  );
+  const response = await axios.post(`${BASE_URL}/login`, {
+    user,
+  });
   return response.data;
 });
 
@@ -37,17 +29,9 @@ export const fetchCurrentUser = createAsyncThunk('user/authorized', async () => 
 });
 
 export const signup = createAsyncThunk('user/signup', async (user) => {
-  const response = await axios.post(
-    `${BASE_URL}/signup`,
-    {
-      user,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-      },
-    },
-  );
+  const response = await axios.post(`${BASE_URL}/signup`, {
+    user,
+  });
   return response.data;
 });
 
