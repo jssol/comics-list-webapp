@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-function Link({
+const Link = ({
   to, children, className, onClick,
-}) {
-  return (
-    <NavLink
-      to={to}
-      onClick={onClick}
-      className={`transition-all duration-200 ${className}`}
-    >
-      {children}
-    </NavLink>
-  );
-}
+}) => (
+  <NavLink
+    to={to}
+    onClick={onClick}
+    className={`transition-all duration-200 ${className}`}
+  >
+    {children}
+  </NavLink>
+);
 
 Link.propTypes = {
   to: PropTypes.string.isRequired,
