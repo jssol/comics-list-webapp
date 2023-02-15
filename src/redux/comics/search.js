@@ -5,7 +5,7 @@ import BASE_URL from '../api';
 const initialState = {
   status: 'idle',
   comics: [],
-  error: '',
+  message: '',
 };
 
 export const searchComics = createAsyncThunk('comics/searchComics', async (query) => {
@@ -20,39 +20,39 @@ const searchSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(searchComics.pending, (state) => {
-      let { status, comics, error } = state;
+      let { status, comics } = state;
       status = 'loading';
       comics = [];
-      error = '';
       return {
         ...state,
         status,
         comics,
-        error,
       };
     });
     builder.addCase(searchComics.fulfilled, (state, action) => {
-      let { status, comics, error } = state;
+      let { status, comics, message } = state;
       status = 'completed';
       comics = action.payload;
-      error = '';
+      if (comics.length === 0) {
+        status = 'failed';
+        message = 'No Comics Found :(';
+      }
       return {
         ...state,
         status,
         comics,
-        error,
+        message,
       };
     });
-    builder.addCase(searchComics.rejected, (state, action) => {
-      let { status, comics, error } = state;
+    builder.addCase(searchComics.rejected, (state) => {
+      let { status, comics } = state;
       status = 'failed';
       comics = [];
-      error = action.error.message;
       return {
         ...state,
         status,
         comics,
-        error,
+        message: 'No Comics Found :(',
       };
     });
   },

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import Carousel from 'react-material-ui-carousel';
 import { FaChevronLeft, FaChevronRight, FaSpider } from 'react-icons/fa';
 import Highlight from './Highlight';
 
-const HighlightsCarousel = (props) => {
+const HighlightsCarousel = () => {
   const [indicatorStyle, setIndicatorStyle] = useState({});
-  const handleResize = () => {
+  const eventsState = useSelector((state) => state.events);
+  const handleResize = useCallback(() => {
     if (window.innerWidth >= 768) {
       setIndicatorStyle({
         style: {
@@ -27,15 +28,15 @@ const HighlightsCarousel = (props) => {
         },
       });
     }
-  };
+  }, [setIndicatorStyle]);
 
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }, [handleResize]);
 
-  const { events } = props;
+  const { events } = eventsState;
 
   return (
     <>
@@ -72,10 +73,6 @@ const HighlightsCarousel = (props) => {
       )}
     </>
   );
-};
-
-HighlightsCarousel.propTypes = {
-  events: PropTypes.arrayOf.isRequired,
 };
 
 export default HighlightsCarousel;

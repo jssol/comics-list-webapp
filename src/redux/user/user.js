@@ -1,0 +1,155 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import BASE_URL from '../api';
+
+const initialState = {
+  status: 'idle',
+  loggedIn: false,
+  user: {},
+  message: '',
+};
+
+export const login = createAsyncThunk('user/login', async (user) => {
+  const response = await axios.post(`${BASE_URL}/login`, {
+    user,
+  });
+  return response.data;
+});
+
+export const fetchCurrentUser = createAsyncThunk('user/authorized', async () => {
+  const response = await axios.post(
+    `${BASE_URL}/authorized`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+      },
+    },
+  );
+  return response.data;
+});
+
+export const signup = createAsyncThunk('user/signup', async (user) => {
+  const response = await axios.post(`${BASE_URL}/signup`, {
+    user,
+  });
+  return response.data;
+});
+
+export const deleteAccount = createAsyncThunk('user/delete-account', async () => {
+  const response = await axios.post(`${BASE_URL}/delete-account`);
+  return response.data;
+});
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    logout: (state) => {
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        status: 'idle',
+        loggedIn: false,
+        user: {},
+        message: '',
+      };
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(signup.pending, (state) => ({
+      ...state,
+      status: 'loading',
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(signup.fulfilled, (state, action) => {
+      localStorage.setItem('token', JSON.stringify(action.payload.jwt));
+      return {
+        ...state,
+        status: 'completed',
+        loggedIn: true,
+        user: action.payload.user,
+        message: 'Account created successfully!',
+      };
+    });
+    builder.addCase(signup.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+      loggedIn: false,
+      user: {},
+      message: 'Account could not be created. Try again!',
+    }));
+    builder.addCase(login.pending, (state) => ({
+      ...state,
+      status: 'loading',
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(login.fulfilled, (state, action) => {
+      localStorage.setItem('token', JSON.stringify(action.payload.jwt));
+      return {
+        ...state,
+        status: 'completed',
+        loggedIn: true,
+        user: action.payload.user,
+        message: 'You have successfully logged in!',
+      };
+    });
+    builder.addCase(login.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+      loggedIn: false,
+      user: {},
+      message: 'Invalid email or password!',
+    }));
+    builder.addCase(fetchCurrentUser.pending, (state) => ({
+      ...state,
+      status: 'loading',
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(fetchCurrentUser.fulfilled, (state, action) => ({
+      ...state,
+      status: 'completed',
+      loggedIn: true,
+      user: action.payload.user,
+      message: 'Fetch current user success',
+    }));
+    builder.addCase(fetchCurrentUser.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+      loggedIn: false,
+      user: {},
+      message: 'Fetch current user failed',
+    }));
+    builder.addCase(deleteAccount.pending, (state) => ({
+      ...state,
+      status: 'loading',
+      loggedIn: false,
+      user: {},
+      message: '',
+    }));
+    builder.addCase(deleteAccount.fulfilled, (state) => ({
+      ...state,
+      status: 'completed',
+      loggedIn: false,
+      user: {},
+      message: 'Account deleted successfully!',
+    }));
+    builder.addCase(deleteAccount.rejected, (state) => ({
+      ...state,
+      status: 'failed',
+      loggedIn: false,
+      user: {},
+      message: 'Account could not be deleted. Try again!',
+    }));
+  },
+});
+
+export const { logout } = userSlice.actions;
+
+export default userSlice.reducer;

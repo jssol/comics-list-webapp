@@ -7,7 +7,7 @@ $width: fit-content;
 }
 
 .Title::before {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   bottom: 50%;
@@ -15,12 +15,12 @@ $width: fit-content;
   transform: translate(-50%, -50%) skewX(-20deg);
   width: 0.25em;
   height: 75%;
-  background-color: rgba(239, 68, 68, 1);
+  background-color: rgb(239 68 68 / 100%);
   z-index: -5;
 }
 
 .Title::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   top: 125%;
@@ -28,6 +28,6 @@ $width: fit-content;
   transform: translate(-50%, -50%) skewX(-20deg);
   width: 0.25em;
   height: 75%;
-  background-color: rgba(239, 68, 68, 1);
+  background-color: rgb(239 68 68 / 100%);
   z-index: -5;
 }
